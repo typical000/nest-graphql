@@ -1,0 +1,23 @@
+# Single photo item
+type Photo {
+  id: Int!
+  url: String! @deprecated(reason: "Use 'id' for URL generation instead")
+}
+
+# Photos type. Used inside user
+type Photos {
+  primary: Photo,
+  all: [Photo],
+  count: Int!,
+}
+
+# Single user registered on platform
+type User {
+  id: Int!
+  login: String!
+  photos: Photos
+}
+
+type Query {
+  user(id: Int!): User
+}
